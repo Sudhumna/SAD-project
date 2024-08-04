@@ -1,0 +1,100 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+h1 {
+    width: 100%;
+    text-align: center;
+    background-color: #e0f7fa;
+    color: #00796b;
+    padding: 20px 0;
+    margin: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+h2 {
+    color: #00796b;
+    top: 0;
+    left: 0;
+    padding: 20px 0;
+    margin: 0;
+    right: 100px;
+}
+
+form {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+input[type="text"], input[type="number"], input[type="password"], input[type="file"], select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #00796b;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #004d40;
+}
+
+footer {
+    background-color: rgb(198, 245, 245);
+    position: fixed;
+    width: 100%;
+    text-align: center;
+    left: 0;
+    bottom: 0;
+    padding: 10px 0;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background: linear-gradient(rgba(216, 216, 206, 0.7), rgba(26, 26, 6, 0.7));
+     */
+     
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.hero {
+    width: 100%;
+    max-width: 500px;
+}

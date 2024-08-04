@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online voting system - Registration</title>
+    <link rel="stylesheet" href="css/regstyle.css">
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <h1>Online Voting Website</h1>
+            <h2>Registration</h2>
+            <form action="../api/register.php" method="POST" enctype="multipart/form-data">
+                <input type="text" name="name" placeholder="Name" required>
+                <input type="number" name="mob" placeholder="Mobile" required>
+                <input type="password" name="pass" placeholder="Password" required>
+                <input type="password" name="cpass" placeholder="Confirm Password" required>
+                <input type="text" name="add" placeholder="Address" required>
+                <div id="upload">
+                    Upload image: <input type="file" id="profile" name="image" required>
+                </div>
+                <div id="upload">
+                    Select your role:
+                    <select name="role">
+                        <option value="1">Voter</option>
+                        <option value="2">Group</option>
+                    </select>
+                </div>
+                <button id="registerbtn" type="submit" name="registerbtn">Register</button>
+                <div style="text-align: center; margin-top: 10px;">
+                    Already a user? <a href="../">Login here</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <footer>
+        <p>Developed by Sudhumna Phuyal</p>
+    </footer>
+</body>
+</html>

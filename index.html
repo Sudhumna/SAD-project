@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Voting System - Home</title>
+    <link rel="stylesheet" href="css/indexstyle.css">
+</head>
+<body>
+    <div class="center-content">
+        <div class="contaner">
+            <div class="hero">
+                <div id="headerSection">
+                    <h1>Online Voting System</h1>
+                </div>
+                <div id="loginSection">
+                    <h2>Login</h2>
+                    <form action="api/login.php" method="POST">
+                        <label for="Mobile">Mobile number:</label><br>
+                        <input type="number" name="mob" placeholder="Enter mobile" required><br><br>
+                        <label for="Password">Password:</label><br>
+                        <input type="password" name="pass" placeholder="Enter password" required><br><br>
+                        <label for="select">Choose:</label><br>
+                        <select name="role">
+                            <option value="1">Voter</option>
+                            <option value="2">Group</option>
+                        </select><br><br>
+                        <button id="loginbtn" type="submit" name="loginbtn">Login</button><br><br>
+                        <h5>New user? <a href="routes/register.html">Click Here To Register</a></h5>
+                        <h5>Want to see result of voting? <a href="api/chart.php">Click Here</a></h5>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>Developed by Sudhumna Phuyal</p>
+    </footer>
+</body>
+</html>
