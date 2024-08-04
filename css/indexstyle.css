@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color:#f4f4f4;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -85,7 +85,6 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(rgba(26, 26, 6, 0.7), rgba(26, 26, 6, 0.7));
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;

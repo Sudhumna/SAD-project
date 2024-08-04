@@ -1,36 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Voting System - Home</title>
+    <title>Online Voting System - Login</title>
     <link rel="stylesheet" href="css/indexstyle.css">
 </head>
 <body>
-    <div class="center-content">
-        <div class="contaner">
-            <div class="hero">
-                <div id="headerSection">
-                    <h1>Online Voting System</h1>
+    <div class="container">
+        <div class="hero">
+            <h1>Online Voting Website</h1>
+            <h2>Login</h2>
+            <form action="../final/api/login.php" method="POST">
+                <label for="Mobile">Mobile number:</label><br>
+                <input type="number" name="mob" placeholder="Mobile" required>
+                <label for="Password">Password:</label><br>
+                <input type="password" name="pass" placeholder="Password" required>
+                <div id="role-selection">
+                    Select your role:
+                    <select name="role" required>
+                        <option value="">Select Role</option>
+                        <option value="1">Voter</option>
+                        <option value="2">Group</option>
+                    </select>
                 </div>
-                <div id="loginSection">
-                    <h2>Login</h2>
-                    <form action="api/login.php" method="POST">
-                        <label for="Mobile">Mobile number:</label><br>
-                        <input type="number" name="mob" placeholder="Enter mobile" required><br><br>
-                        <label for="Password">Password:</label><br>
-                        <input type="password" name="pass" placeholder="Enter password" required><br><br>
-                        <label for="select">Choose:</label><br>
-                        <select name="role">
-                            <option value="1">Voter</option>
-                            <option value="2">Group</option>
-                        </select><br><br>
-                        <button id="loginbtn" type="submit" name="loginbtn">Login</button><br><br>
-                        <h5>New user? <a href="routes/register.html">Click Here To Register</a></h5>
-                        <h5>Want to see result of voting? <a href="api/chart.php">Click Here</a></h5>
-                    </form>
+                <button type="submit" name="loginbtn">Login</button>
+                <div style="text-align: center; margin-top: 10px;">
+                    Not a user? <a href="../final/routes/register.html">Register here</a><br><br>
+                    Want to see result of voting? <a href="api/chart.php">Click Here</a>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
     <footer>

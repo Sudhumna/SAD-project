@@ -1,30 +1,72 @@
 <?php
-    session_start();
-    include("connection.php");
+session_start();
+include("../api/connection.php"); // Ensure the path to connection.php is correct
 
-    $votes = $_POST['gvotes'];
-    $total_votes= $votes+1;
-    $gid = $_POST['gid'];
-    $uid = $_SESSION['id'];
+// Check if the user is logged in
+if (!isset($_SESSION['id'])) {
+    echo '<script>
+            alert("You need to be logged in to vote!");
+            window.location = "../routes/login.html";
+        </script>';
+    exit();
+}
 
-    $update_votes = mysqli_query($connect, "update user set votes='$total_votes' where id='$gid'");
-    $update_status = mysqli_query($connect, "update user set status=1 where id='$uid'");
+$user_id = $_SESSION['id'];
+$group_id = $_POST['gid'];
 
-    if($update_status and $update_votes){
-        $getGroups = mysqli_query($connect, "select name, photo, votes, id from user where role=2 ");
-        $groups = mysqli_fetch_all($getGroups, MYSQLI_ASSOC);
-        $_SESSION['groups'] = $groups;
-        $_SESSION['status'] = 1;
+// Check if the user has already voted
+$query = "SELECT * FROM votes WHERE user_id = ?";
+$stmt = $connect->prepare($query);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows > 0) {
+    // User has already voted
+    echo '<script>
+            alert("You have already voted!");
+            window.location = "../routes/dashboard.php";
+        </script>';
+    exit();
+}
+
+// Increment the group's vote count
+$query = "UPDATE user SET votes = votes + 1 WHERE id = ?";
+$stmt = $connect->prepare($query);
+$stmt->bind_param("i", $group_id);
+$stmt->execute();
+
+if ($stmt->affected_rows > 0) {
+    // Record the vote in the votes table
+    $query = "INSERT INTO votes (user_id, group_id) VALUES (?, ?)";
+    $stmt = $connect->prepare($query);
+    $stmt->bind_param("ii", $user_id, $group_id);
+    $stmt->execute();
+
+    if ($stmt->affected_rows > 0) {
+        // Update user's voting status
+        $query = "UPDATE user SET status = 1 WHERE id = ?";
+        $stmt = $connect->prepare($query);
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+
         echo '<script>
-                    alert("Voting successfull!");
-                    window.location = "../routes/dashboard.php";
-                </script>';
-    }
-    else{
+                alert("Vote recorded successfully!");
+                window.location = "../routes/dashboard.php";
+            </script>';
+    } else {
         echo '<script>
-                    alert("Voting failed!.. Try again.");
-                    window.location = "../routes/dashboard.php";
-                </script>';
+                alert("Failed to record vote!");
+                window.location = "../routes/dashboard.php";
+            </script>';
     }
-    
+} else {
+    echo '<script>
+            alert("Failed to update group votes!");
+            window.location = "../routes/dashboard.php";
+        </script>';
+}
+
+$stmt->close();
+$connect->close();
 ?>
